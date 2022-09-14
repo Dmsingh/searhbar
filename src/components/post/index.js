@@ -18,7 +18,7 @@ import Loading from'../Loder'
   useEffect(() => {
   setdata({...data,loading:true})
      return async()=>{    
-      !typing&& await axios.get(`https://hn.algolia.com/api/v1/items/${id}`)
+       await axios.get(`https://hn.algolia.com/api/v1/items/${id}`)
               .then((response) =>{ 
               setdata({...data,loading:false,data:response.data})
   })
@@ -45,7 +45,7 @@ import Loading from'../Loder'
               <Text  dangerouslySetInnerHTML={{
     __html: value.text
   }}>
-              {/* <p >{value.text}</p> */}
+              
 
               </Text>
               
