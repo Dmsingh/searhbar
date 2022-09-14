@@ -18,7 +18,7 @@ import Loading from'../Loder'
   useEffect(() => {
   setdata({...data,loading:true})
      return async()=>{    
-    await axios.get(`https://hn.algolia.com/api/v1/items/${id}`)
+      !typing&& await axios.get(`https://hn.algolia.com/api/v1/items/${id}`)
               .then((response) =>{ 
               setdata({...data,loading:false,data:response.data})
   })
@@ -32,7 +32,7 @@ import Loading from'../Loder'
       
   }, [id])// eslint-disable-line react-hooks/exhaustive-deps
   return (
-    load?<Loading/>:
+    typing||load?<Loading/>:
     data.loading?<Loading/>:
     <Container>
         <Title>Title: {data.data&& data.data.title?data.data.title:"No Title"}</Title>

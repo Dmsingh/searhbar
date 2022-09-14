@@ -85,8 +85,14 @@ function Index({ Loader, err,typing }) {
                 style={{ textDecoration: "none" }}
                 to={`/${value.objectID}`}
               >
-                <Text onClick={() =>  settext("")
-                }>
+                <Text onClick={() => {
+                  
+                  settext("") 
+                  setTimeout(()=>{
+                    window.location.reload()
+
+                  },500)
+                }}>
                   {value?.title ? value.title : value?.story_title}
                 </Text>
               </Link>
