@@ -37,7 +37,7 @@ import Loading from'../Loder'
     <Container>
         <Title>Title: {data.data&& data.data.title?data.data.title:"No Title"}</Title>
         <Title>Points: {data.data&& data.data.points?data.data.points:"No Points"}</Title>
-        <Title>Commnents:</Title>
+        <Title>Comments:</Title>
         {data.data.children&& data.data.children.map((value)=>(
             <TextContainer key={value.id}>
               
