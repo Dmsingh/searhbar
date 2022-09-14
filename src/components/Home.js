@@ -3,7 +3,6 @@ import logo from './logo.svg';
 import '../App.css';
 import Loading from'./Loder'
 function Home({load}) {
-    console.log(load);
     return (
         <div style={{textAlign: 'center'}}>
 
