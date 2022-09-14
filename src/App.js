@@ -1,23 +1,48 @@
-import logo from './logo.svg';
-import './App.css';
 
+// import Search from './components/Search'
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  
+} from "react-router-dom";
+import Home from './components/Home'
+// import PostDetail from './components/PostDetail'
+import PostDetail from './components/post/index'
+import SearchBar from './components/searchBar/index'
+import { useState } from 'react';
+import { useCallback } from 'react';
 function App() {
+  const [data, setdata] = useState({
+    loader:false,
+    error:false,
+    message:"",
+    typing:false,
+
+  })
+  const isLoader=useCallback((result)=> setdata({...data,loader:result}),[data]);
+  const isError=useCallback((result,message)=> setdata({...data,error:result,message:message}),[data]);
+  const isTyping=useCallback((result)=> setdata({...data,typing:result}),[data]);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+       {/* <Search/> */}
+
+       <Router>
+     
+      <SearchBar Loader={isLoader} err={isError} typing={isTyping} />
+        
+
+        <Routes>
+          <Route path="/:id" element={<PostDetail load={data.loader} typing={data.typing} />} />
+            
+            
+          <Route path="/" element={<Home  load={data.loader} />} />
+          
+
+        </Routes>
+   </Router>
+      
+      
     </div>
   );
 }
